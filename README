@@ -11,6 +11,13 @@ A callback to the done button can be assigned as selector or block.
 KeyboardHelper works with a ViewController object.
 Example:
 
+Step 0: Add the files:
+
+Add the KeyboardHelper folder into your project. It has just two files:
+1. KeyboardHelper.h
+2. KehboardHelper.m
+
+
 Step 1: Declare a property
 ...
 #import "KeyboardHelper.h"
@@ -58,3 +65,5 @@ Known Issues:
 
 
 THANKS FOR ANY FEEDBACK AND BUG REPORT :)
+
+Blog Link: http://amanpages.com/wordpress/iphone-app-development-core-sdk-cocoa/keyboard-helper-for-iphone-apps-using-inputaccessoryview-with-previous-next-and-done-buttons/
