@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0207353215BD6A2600129400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0207353115BD6A2600129400 /* UIKit.framework */; };
+		0207353415BD6A2600129400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0207353315BD6A2600129400 /* Foundation.framework */; };
+		0207353615BD6A2600129400 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0207353515BD6A2600129400 /* CoreGraphics.framework */; };
+		0207353C15BD6A2600129400 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0207353A15BD6A2600129400 /* InfoPlist.strings */; };
+		0207353E15BD6A2600129400 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0207353D15BD6A2600129400 /* main.m */; };
+		0207354215BD6A2600129400 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0207354115BD6A2600129400 /* AppDelegate.m */; };
+		0207354515BD6A2600129400 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0207354415BD6A2600129400 /* ViewController.m */; };
+		0207354815BD6A2600129400 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0207354615BD6A2600129400 /* ViewController.xib */; };
+		0207355015BD6A2700129400 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0207354F15BD6A2700129400 /* SenTestingKit.framework */; };
+		0207355115BD6A2700129400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0207353115BD6A2600129400 /* UIKit.framework */; };
+		0207355215BD6A2700129400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0207353315BD6A2600129400 /* Foundation.framework */; };
+		0207355A15BD6A2700129400 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0207355815BD6A2700129400 /* InfoPlist.strings */; };
+		0207355D15BD6A2700129400 /* KeyboardHelperDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0207355C15BD6A2700129400 /* KeyboardHelperDemoTests.m */; };
+		0207357315BD6E2400129400 /* KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0207357215BD6E2400129400 /* KeyboardHelper.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0207355315BD6A2700129400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0207352415BD6A2500129400 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0207352C15BD6A2600129400;
+			remoteInfo = KeyboardHelperDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0207352D15BD6A2600129400 /* KeyboardHelperDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardHelperDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0207353115BD6A2600129400 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0207353315BD6A2600129400 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0207353515BD6A2600129400 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0207353915BD6A2600129400 /* KeyboardHelperDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyboardHelperDemo-Info.plist"; sourceTree = "<group>"; };
+		0207353B15BD6A2600129400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0207353D15BD6A2600129400 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0207353F15BD6A2600129400 /* KeyboardHelperDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeyboardHelperDemo-Prefix.pch"; sourceTree = "<group>"; };
+		0207354015BD6A2600129400 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0207354115BD6A2600129400 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0207354315BD6A2600129400 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0207354415BD6A2600129400 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0207354715BD6A2600129400 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		0207354E15BD6A2700129400 /* KeyboardHelperDemoTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardHelperDemoTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0207354F15BD6A2700129400 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0207355715BD6A2700129400 /* KeyboardHelperDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyboardHelperDemoTests-Info.plist"; sourceTree = "<group>"; };
+		0207355915BD6A2700129400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0207355B15BD6A2700129400 /* KeyboardHelperDemoTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardHelperDemoTests.h; sourceTree = "<group>"; };
+		0207355C15BD6A2700129400 /* KeyboardHelperDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardHelperDemoTests.m; sourceTree = "<group>"; };
+		0207357115BD6E2400129400 /* KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardHelper.h; sourceTree = "<group>"; };
+		0207357215BD6E2400129400 /* KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardHelper.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0207352A15BD6A2600129400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207353215BD6A2600129400 /* UIKit.framework in Frameworks */,
+				0207353415BD6A2600129400 /* Foundation.framework in Frameworks */,
+				0207353615BD6A2600129400 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0207354A15BD6A2700129400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207355015BD6A2700129400 /* SenTestingKit.framework in Frameworks */,
+				0207355115BD6A2700129400 /* UIKit.framework in Frameworks */,
+				0207355215BD6A2700129400 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0207352215BD6A2500129400 = {
+			isa = PBXGroup;
+			children = (
+				0207356C15BD6B9B00129400 /* KeyboardHelper */,
+				0207353715BD6A2600129400 /* KeyboardHelperDemo */,
+				0207355515BD6A2700129400 /* KeyboardHelperDemoTests */,
+				0207353015BD6A2600129400 /* Frameworks */,
+				0207352E15BD6A2600129400 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0207352E15BD6A2600129400 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0207352D15BD6A2600129400 /* KeyboardHelperDemo.app */,
+				0207354E15BD6A2700129400 /* KeyboardHelperDemoTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0207353015BD6A2600129400 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0207353115BD6A2600129400 /* UIKit.framework */,
+				0207353315BD6A2600129400 /* Foundation.framework */,
+				0207353515BD6A2600129400 /* CoreGraphics.framework */,
+				0207354F15BD6A2700129400 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0207353715BD6A2600129400 /* KeyboardHelperDemo */ = {
+			isa = PBXGroup;
+			children = (
+				0207354015BD6A2600129400 /* AppDelegate.h */,
+				0207354115BD6A2600129400 /* AppDelegate.m */,
+				0207354315BD6A2600129400 /* ViewController.h */,
+				0207354415BD6A2600129400 /* ViewController.m */,
+				0207354615BD6A2600129400 /* ViewController.xib */,
+				0207353815BD6A2600129400 /* Supporting Files */,
+			);
+			path = KeyboardHelperDemo;
+			sourceTree = "<group>";
+		};
+		0207353815BD6A2600129400 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0207353915BD6A2600129400 /* KeyboardHelperDemo-Info.plist */,
+				0207353A15BD6A2600129400 /* InfoPlist.strings */,
+				0207353D15BD6A2600129400 /* main.m */,
+				0207353F15BD6A2600129400 /* KeyboardHelperDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0207355515BD6A2700129400 /* KeyboardHelperDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				0207355B15BD6A2700129400 /* KeyboardHelperDemoTests.h */,
+				0207355C15BD6A2700129400 /* KeyboardHelperDemoTests.m */,
+				0207355615BD6A2700129400 /* Supporting Files */,
+			);
+			path = KeyboardHelperDemoTests;
+			sourceTree = "<group>";
+		};
+		0207355615BD6A2700129400 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0207355715BD6A2700129400 /* KeyboardHelperDemoTests-Info.plist */,
+				0207355815BD6A2700129400 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0207356C15BD6B9B00129400 /* KeyboardHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0207357115BD6E2400129400 /* KeyboardHelper.h */,
+				0207357215BD6E2400129400 /* KeyboardHelper.m */,
+			);
+			path = KeyboardHelper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0207352C15BD6A2600129400 /* KeyboardHelperDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0207356015BD6A2700129400 /* Build configuration list for PBXNativeTarget "KeyboardHelperDemo" */;
+			buildPhases = (
+				0207352915BD6A2600129400 /* Sources */,
+				0207352A15BD6A2600129400 /* Frameworks */,
+				0207352B15BD6A2600129400 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyboardHelperDemo;
+			productName = KeyboardHelperDemo;
+			productReference = 0207352D15BD6A2600129400 /* KeyboardHelperDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0207354D15BD6A2700129400 /* KeyboardHelperDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0207356315BD6A2700129400 /* Build configuration list for PBXNativeTarget "KeyboardHelperDemoTests" */;
+			buildPhases = (
+				0207354915BD6A2700129400 /* Sources */,
+				0207354A15BD6A2700129400 /* Frameworks */,
+				0207354B15BD6A2700129400 /* Resources */,
+				0207354C15BD6A2700129400 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0207355415BD6A2700129400 /* PBXTargetDependency */,
+			);
+			name = KeyboardHelperDemoTests;
+			productName = KeyboardHelperDemoTests;
+			productReference = 0207354E15BD6A2700129400 /* KeyboardHelperDemoTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0207352415BD6A2500129400 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "XappLab!";
+			};
+			buildConfigurationList = 0207352715BD6A2500129400 /* Build configuration list for PBXProject "KeyboardHelperDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0207352215BD6A2500129400;
+			productRefGroup = 0207352E15BD6A2600129400 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0207352C15BD6A2600129400 /* KeyboardHelperDemo */,
+				0207354D15BD6A2700129400 /* KeyboardHelperDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0207352B15BD6A2600129400 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207353C15BD6A2600129400 /* InfoPlist.strings in Resources */,
+				0207354815BD6A2600129400 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0207354B15BD6A2700129400 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207355A15BD6A2700129400 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0207354C15BD6A2700129400 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0207352915BD6A2600129400 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207353E15BD6A2600129400 /* main.m in Sources */,
+				0207354215BD6A2600129400 /* AppDelegate.m in Sources */,
+				0207354515BD6A2600129400 /* ViewController.m in Sources */,
+				0207357315BD6E2400129400 /* KeyboardHelper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0207354915BD6A2700129400 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0207355D15BD6A2700129400 /* KeyboardHelperDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0207355415BD6A2700129400 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0207352C15BD6A2600129400 /* KeyboardHelperDemo */;
+			targetProxy = 0207355315BD6A2700129400 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0207353A15BD6A2600129400 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0207353B15BD6A2600129400 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0207354615BD6A2600129400 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0207354715BD6A2600129400 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+		0207355815BD6A2700129400 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0207355915BD6A2700129400 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0207355E15BD6A2700129400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0207355F15BD6A2700129400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0207356115BD6A2700129400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyboardHelperDemo/KeyboardHelperDemo-Prefix.pch";
+				INFOPLIST_FILE = "KeyboardHelperDemo/KeyboardHelperDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0207356215BD6A2700129400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyboardHelperDemo/KeyboardHelperDemo-Prefix.pch";
+				INFOPLIST_FILE = "KeyboardHelperDemo/KeyboardHelperDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0207356415BD6A2700129400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KeyboardHelperDemo.app/KeyboardHelperDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyboardHelperDemo/KeyboardHelperDemo-Prefix.pch";
+				INFOPLIST_FILE = "KeyboardHelperDemoTests/KeyboardHelperDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		0207356515BD6A2700129400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KeyboardHelperDemo.app/KeyboardHelperDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KeyboardHelperDemo/KeyboardHelperDemo-Prefix.pch";
+				INFOPLIST_FILE = "KeyboardHelperDemoTests/KeyboardHelperDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0207352715BD6A2500129400 /* Build configuration list for PBXProject "KeyboardHelperDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0207355E15BD6A2700129400 /* Debug */,
+				0207355F15BD6A2700129400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0207356015BD6A2700129400 /* Build configuration list for PBXNativeTarget "KeyboardHelperDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0207356115BD6A2700129400 /* Debug */,
+				0207356215BD6A2700129400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0207356315BD6A2700129400 /* Build configuration list for PBXNativeTarget "KeyboardHelperDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0207356415BD6A2700129400 /* Debug */,
+				0207356515BD6A2700129400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0207352415BD6A2500129400 /* Project object */;
+}
