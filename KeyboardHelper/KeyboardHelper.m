@@ -98,24 +98,32 @@
 			return NSOrderedDescending;
 		}];
 		
+		enabled = NO;
 		[self enable];
 						
 	}
 	return self;
 }
 - (void) enable{
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(keyboardWillShow:) 
-												 name:UIKeyboardWillShowNotification 
-											   object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(keyboardWillHide:) 
-												 name:UIKeyboardWillHideNotification
-											   object:nil];
+	if (!enabled) {
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(keyboardWillShow:) 
+													 name:UIKeyboardWillShowNotification 
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(keyboardWillHide:) 
+													 name:UIKeyboardWillHideNotification
+												   object:nil];
+		enabled = YES;
+	}
+		
 }
 - (void) disable{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if (enabled) {
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
+		enabled = NO;
+	}		
 }
 - (void) updateViewPosition{
 	float kbTopY = kbRect.origin.y;

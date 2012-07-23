@@ -11,6 +11,7 @@ typedef void(^t_KeyboardHelperOnDone)(void);
 
 @interface KeyboardHelper : NSObject<UITextFieldDelegate, UITextViewDelegate>{
 	float statusBarHeight;
+	BOOL enabled;
 }
 
 @property (nonatomic, strong) NSMutableArray* textFieldsAndViews;

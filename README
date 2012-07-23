@@ -1,0 +1,60 @@
+KeyboarHelper adds a inputAccessoryView with Previsou, Next and Done button.
+
+If any textfield or textarea is selected a toolbar with the above buttons 
+will be shown just above the keyboard.
+
+Previous button is absent if the first textfield/view is selected and Next button is absent
+if the last textfield/view is selected.
+
+A callback to the done button can be assigned as selector or block.
+
+KeyboardHelper works with a ViewController object.
+Example:
+
+Step 1: Declare a property
+...
+#import "KeyboardHelper.h"
+...
+...
+@property (nonatomic, strong) KeyboardHelper* kbHelper;
+
+Step 2: Initialize in viewDidLoad method
+// in viewDidLoad method:
+// using selector
+self.kbHelper = [[KeyboardHelper alloc] initWithViewController:self onDoneSelector:@selector(onDone)];
+
+// using block
+self.kbHelper = [[KeyboardHelper alloc] initWithViewController:self onDoneAction:^(void){
+		NSLog(@"On Done!!");
+	}];
+	
+NOTE: If view is not loaded, there will be an exception
+
+Step 3: Enable/Disable
+Since KeyboardHelper observs UIKeyboardWillShowNotification and UIKeyboardWillHideNotification,
+it needs to be remove itself from observing before the view disappears.
+
+- (void) viewWillAppear:(BOOL)animated{
+	[self.kbHelper enable];
+}
+- (void) viewWillDisappear:(BOOL)animated{
+	[self.kbHelper disable];
+}
+
+
+Step 4: Delegates
+KeyboardHelper sets itself as delegate to all the UITextField and UITextView present 
+in the viewcontroller it initialized with.
+
+So, it exposes these two properities allowing any external delegate:
+
+1. textViewDelegate
+2. textFieldDelegate
+
+
+Known Issues:
+1. Doesn't work well in Landscape mode.
+2. Landscape right orientation is not supported.
+
+
+THANKS FOR ANY FEEDBACK AND BUG REPORT :)

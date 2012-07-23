@@ -29,7 +29,12 @@
 - (void) onDone{
 	NSLog(@"On Done!!");
 }
-- (void) viewDidDisappear:(BOOL)animated{
+
+- (void) viewWillAppear:(BOOL)animated{
+	[self.kbHelper enable];
+}
+- (void) viewWillDisappear:(BOOL)animated{
+	[self.kbHelper disable];
 }
 
 - (void)viewDidUnload{
