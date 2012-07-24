@@ -39,4 +39,5 @@ typedef void(^t_KeyboardHelperOnDone)(void);
 - (id) initWithViewController:(UIViewController*)viewController onDoneAction:(t_KeyboardHelperOnDone)onDone;
 - (void) enable;
 - (void) disable;
+
 @end

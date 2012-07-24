@@ -123,7 +123,7 @@
 	if (enabled) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
 		enabled = NO;
-	}		
+	}
 }
 - (void) updateViewPosition{
 	float kbTopY = kbRect.origin.y;
