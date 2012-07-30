@@ -42,10 +42,10 @@
 		self.distanceFromKeyBoardTop = 5;
 		self.shouldSelectNextOnEnter = YES;
 		
-//		NSLog(@"Initial frame: %@", NSStringFromCGRect(vc.view.frame));
+		NSLog(@"Initial frame: %@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame]));
 		self.initialFrame = vc.view.frame;
 		statusBarHeight = 0;
-		if (![UIApplication sharedApplication].isStatusBarHidden) {
+		if (![UIApplication sharedApplication].isStatusBarHidden) {			
 			CGRect rect =   [[UIApplication sharedApplication] statusBarFrame];
 			initialFrame.origin.y += rect.size.height;	
 			statusBarHeight = rect.size.height;
@@ -78,7 +78,8 @@
 		
 		self.textFieldsAndViews = [NSMutableArray new];
 		for (UIView* aview in viewController.view.subviews) {
-			if ([aview isKindOfClass:[UITextField class]] || [aview isKindOfClass:[UITextView class]]) {
+			if ( !aview.hidden && aview.alpha && ( [aview isKindOfClass:[UITextField class]] || [aview isKindOfClass:[UITextView class]] )) {
+				
 				if([aview respondsToSelector:@selector(setInputAccessoryView:)]){
 					[aview performSelector:@selector(setInputAccessoryView:) withObject:self.barHelper];
 				}
