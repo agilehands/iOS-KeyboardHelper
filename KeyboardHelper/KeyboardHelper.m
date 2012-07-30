@@ -9,6 +9,7 @@
 #import "KeyboardHelper.h"
 
 @interface KeyboardHelper()<UITextFieldDelegate, UITextViewDelegate>
+
 @property (nonatomic, strong) NSMutableArray* textFieldsAndViews;
 
 @property (nonatomic, strong) UIToolbar* barHelper;
@@ -25,6 +26,8 @@
 @property (nonatomic, assign) float distanceFromKeyBoardTop;
 @property (nonatomic, assign) BOOL shouldSelectNextOnEnter;
 
+@property (nonatomic, strong) UISegmentedControl* segPrevNext;
+
 
 @end
 
@@ -33,7 +36,7 @@
 @synthesize textViewDelegate, textFieldDelegate, selectedTextFieldOrView;
 @synthesize onDoneBlock, onDoneSelector, viewController;
 @synthesize initialFrame, kbRect, distanceFromKeyBoardTop, shouldSelectNextOnEnter;
-
+@synthesize segPrevNext;
 
 - (id) initWithViewController:(UIViewController*)vc onDoneSelector:(SEL)done{
 	self = [self initWithViewController:vc];
@@ -63,6 +66,8 @@
 		self.distanceFromKeyBoardTop = 5;
 		self.shouldSelectNextOnEnter = YES;
 		
+		self.textFieldsAndViews = [NSMutableArray new];
+		
 		NSLog(@"Initial frame: %@", NSStringFromCGRect([[UIApplication sharedApplication] statusBarFrame]));
 		self.initialFrame = vc.view.frame;
 		statusBarHeight = 0;
@@ -73,31 +78,25 @@
 		}		
 		
 		self.barHelper = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-		barHelper.barStyle = UIBarStyleBlack;
+		barHelper.barStyle = UIBarStyleBlackTranslucent;
 		
-		UIBarButtonItem* btnPrev = [[UIBarButtonItem alloc] initWithTitle:@"Prev" 
-																	style:UIBarButtonItemStyleBordered
-																   target:self 
-																   action:@selector(onPrev:)];
+		// segmented control idea was given by Adam Roberts, Managing Director at Enigmatic Flare, 2012
+		self.segPrevNext = [[UISegmentedControl alloc] initWithItems: [NSArray arrayWithObjects:NSLocalizedString(@"Prev", @"Prev"), NSLocalizedString(@"Next", @"Next"), nil]];
+		segPrevNext.segmentedControlStyle = UISegmentedControlStyleBar;
+		segPrevNext.momentary = YES;
+		[segPrevNext addTarget:self 
+						action:@selector(segmentValueChanged:) 
+			  forControlEvents:UIControlEventValueChanged];
 		
-		UIBarButtonItem* btnNext = [[UIBarButtonItem alloc] initWithTitle:@"Next" 
-																	style:UIBarButtonItemStyleBordered
-																   target:self 
-																   action:@selector(onNext:)];
 		
-		UIBarButtonItem* btnDone = [[UIBarButtonItem alloc] initWithTitle:@"Done" 
+		UIBarButtonItem* btnDone = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done") 
 																	style:UIBarButtonItemStyleDone
 																   target:self 
 																   action:@selector(onDone:)];
 		UIBarButtonItem* seperator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
 																				   target:nil
 																				   action:NULL];
-		self.barButtonSetNormal = [NSArray arrayWithObjects:btnPrev, seperator, btnNext, btnDone, nil];
-		self.barButtonSetAtFirst = [NSArray arrayWithObjects:seperator, btnNext, btnDone, nil];
-		self.barButtonSetAtLast = [NSArray arrayWithObjects:btnPrev, seperator, btnDone, nil];
-				
-		
-		self.textFieldsAndViews = [NSMutableArray new];		
+		[barHelper setItems:[NSArray arrayWithObjects:[[UIBarButtonItem alloc] initWithCustomView:segPrevNext], seperator, btnDone, nil]];
 		[self reload];						
 	}
 	return self;
@@ -118,7 +117,7 @@
 			if([aview respondsToSelector:@selector(setInputAccessoryView:)]){
 				[aview performSelector:@selector(setInputAccessoryView:) withObject:self.barHelper];
 			}
-			
+						
 			[aview performSelector:@selector(setDelegate:) withObject:self];
 			[textFieldsAndViews addObject:aview];
 		}
@@ -155,6 +154,19 @@
 	if (enabled) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self];
 		enabled = NO;
+	}
+}
+
+- (void) segmentValueChanged:(UISegmentedControl*)sender{
+	switch (sender.selectedSegmentIndex) {
+		case 0:	
+			[self onPrev:nil];
+			break;
+		case 1:	
+			[self onNext:nil];
+			break;
+		default:
+			break;
 	}
 }
 - (void) updateViewPosition{
@@ -210,18 +222,20 @@
 						 }];
 	}
 }
-- (void) updateBarHelper{	
+- (void) updateBarHelper{
 	if (!CGRectIsEmpty(self.kbRect)) {
 		[self updateViewPosition];
 	}	
 	
 	id obj = [textFieldsAndViews objectAtIndex:0];
-	if ([obj isFirstResponder]) {
-		[barHelper setItems:self.barButtonSetAtFirst animated:YES];
-	} else if ( [[textFieldsAndViews lastObject] isFirstResponder] ) {
-		[barHelper setItems:self.barButtonSetAtLast animated:YES];
+	if ( obj == selectedTextFieldOrView) {
+		segPrevNext.momentary = NO;
+		segPrevNext.selectedSegmentIndex = 0;
+	} else if ( [textFieldsAndViews lastObject] == selectedTextFieldOrView ) {
+		segPrevNext.momentary = NO;
+		segPrevNext.selectedSegmentIndex = 1;
 	} else {
-		[barHelper setItems:self.barButtonSetNormal animated:YES];
+		segPrevNext.momentary = YES;
 	}
 }
 
@@ -257,15 +271,15 @@
 
 #pragma mark - UITextFieldDelegate methods
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+	self.selectedTextFieldOrView = textField;
+	[self updateBarHelper];
+	
 	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
 		return [textFieldDelegate textFieldShouldBeginEditing:textField];
 	}
 	return YES;
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-	self.selectedTextFieldOrView = textField;
-	[self updateBarHelper];
-	
+- (void)textFieldDidBeginEditing:(UITextField *)textField{	
 	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
 		[textFieldDelegate textFieldDidBeginEditing:textField];
 	}
@@ -304,6 +318,9 @@
 
 #pragma mark - UITextViewDelegate methods
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+	self.selectedTextFieldOrView = textView;
+	[self updateBarHelper];
+	
 	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewShouldBeginEditing:)]) {
 		return [textViewDelegate textViewShouldBeginEditing:textView];
 	}
@@ -316,9 +333,7 @@
 	return YES;
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-	self.selectedTextFieldOrView = textView;
-	[self updateBarHelper];
+- (void)textViewDidBeginEditing:(UITextView *)textView{	
 	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewDidBeginEditing:)]) {
 		[textViewDelegate textViewDidBeginEditing:textView];
 	}
