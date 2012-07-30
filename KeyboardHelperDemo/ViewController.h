@@ -11,4 +11,8 @@
 
 @interface ViewController : UIViewController
 @property (nonatomic, strong) KeyboardHelper* kbHelper;
+@property (nonatomic, strong) IBOutlet UITextField* txtHideable;
+@property (nonatomic, strong) IBOutlet UITextField* txtVisible;
+- (IBAction)onHideShow:(id)sender;
+- (IBAction)onAlpha:(id)sender;
 @end

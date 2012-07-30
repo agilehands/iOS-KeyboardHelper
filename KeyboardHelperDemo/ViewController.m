@@ -13,7 +13,7 @@
 @end
 
 @implementation ViewController
-@synthesize kbHelper;
+@synthesize kbHelper, txtHideable, txtVisible;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -39,6 +39,8 @@
 
 - (void)viewDidUnload{
     [super viewDidUnload];
+	self.txtHideable = nil;
+	self.txtVisible = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
@@ -46,4 +48,31 @@
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)onHideShow:(id)sender{
+	UIButton* btn = (UIButton*)sender;
+	if (btn.selected) {
+		btn.selected = NO;
+		txtHideable.hidden = NO;
+		[kbHelper reload];
+		
+	} else {
+		txtHideable.hidden = YES;
+		btn.selected = YES;
+		[kbHelper reload];
+	}
+}
+
+- (IBAction)onAlpha:(id)sender{
+	UIButton* btn = (UIButton*)sender;
+	if (btn.selected) {
+		btn.selected = NO;
+		txtVisible.alpha = 1;
+		[kbHelper reload];
+		
+	} else {
+		txtVisible.alpha = 0;
+		btn.selected = YES;
+		[kbHelper reload];
+	}
+}
 @end

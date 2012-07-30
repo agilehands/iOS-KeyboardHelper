@@ -38,6 +38,7 @@
 	
 	self = [super init];
 	if (self) {
+		enabled = NO;
 		self.viewController = vc;
 		self.distanceFromKeyBoardTop = 5;
 		self.shouldSelectNextOnEnter = YES;
@@ -76,35 +77,38 @@
 		self.barButtonSetAtLast = [NSArray arrayWithObjects:btnPrev, seperator, btnDone, nil];
 				
 		
-		self.textFieldsAndViews = [NSMutableArray new];
-		for (UIView* aview in viewController.view.subviews) {
-			if ( !aview.hidden && aview.alpha && ( [aview isKindOfClass:[UITextField class]] || [aview isKindOfClass:[UITextView class]] )) {
-				
-				if([aview respondsToSelector:@selector(setInputAccessoryView:)]){
-					[aview performSelector:@selector(setInputAccessoryView:) withObject:self.barHelper];
-				}
-				
-				[aview performSelector:@selector(setDelegate:) withObject:self];
-				[textFieldsAndViews addObject:aview];
-			}
-		}
-		
-		// order
-		[textFieldsAndViews sortUsingComparator:^NSComparisonResult(id obj1, id obj2){
-			CGPoint origin1 = [(UIView*)obj1 frame].origin;
-			CGPoint origin2 = [(UIView*)obj2 frame].origin;			
-			
-			if (origin1.y < origin2.y || origin1.x < origin2.x){
-				return  NSOrderedAscending;
-			}			
-			return NSOrderedDescending;
-		}];
-		
-		enabled = NO;
-		[self enable];
-						
+		self.textFieldsAndViews = [NSMutableArray new];		
+		[self reload];						
 	}
 	return self;
+}
+
+- (void) reload{
+	[textFieldsAndViews removeAllObjects];
+	
+	for (UIView* aview in viewController.view.subviews) {
+		if ( !aview.hidden && aview.alpha && ( [aview isKindOfClass:[UITextField class]] || [aview isKindOfClass:[UITextView class]] )) {
+			
+			if([aview respondsToSelector:@selector(setInputAccessoryView:)]){
+				[aview performSelector:@selector(setInputAccessoryView:) withObject:self.barHelper];
+			}
+			
+			[aview performSelector:@selector(setDelegate:) withObject:self];
+			[textFieldsAndViews addObject:aview];
+		}
+	}
+	
+	// order
+	[textFieldsAndViews sortUsingComparator:^NSComparisonResult(id obj1, id obj2){
+		CGPoint origin1 = [(UIView*)obj1 frame].origin;
+		CGPoint origin2 = [(UIView*)obj2 frame].origin;			
+		
+		if (origin1.y < origin2.y || origin1.x < origin2.x){
+			return  NSOrderedAscending;
+		}			
+		return NSOrderedDescending;
+	}];
+	[self enable];
 }
 - (void) enable{
 	if (!enabled) {
