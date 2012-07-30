@@ -14,6 +14,7 @@
 @synthesize onDoneBlock, onDoneSelector, viewController;
 @synthesize initialFrame, kbRect, distanceFromKeyBoardTop, shouldSelectNextOnEnter;
 
+
 - (id) initWithViewController:(UIViewController*)vc onDoneSelector:(SEL)done{
 	self = [self initWithViewController:vc];
 	if (self) {
@@ -224,22 +225,44 @@
 }
 
 #pragma mark - UITextFieldDelegate methods
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldShouldBeginEditing:)]) {
+		return [textFieldDelegate textFieldShouldBeginEditing:textField];
+	}
+	return YES;
+}
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
 	self.selectedTextFieldOrView = textField;
 	[self updateBarHelper];
 	
-	if (self.textFieldDelegate) {
-		[textFieldDelegate textFieldShouldBeginEditing:textField];
+	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldDidBeginEditing:)]) {
+		[textFieldDelegate textFieldDidBeginEditing:textField];
+	}
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldShouldEndEditing:)]) {
+		return [textFieldDelegate textFieldShouldEndEditing:textField];
+	}
+	return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldDidEndEditing:)]) {
+		[textFieldDelegate textFieldDidEndEditing:textField];
 	}
 }
 
-#pragma mark - UITextViewDelegate methods
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-	self.selectedTextFieldOrView = textView;
-	[self updateBarHelper];
-	if (self.textViewDelegate) {
-		[textViewDelegate textViewShouldBeginEditing:textView];
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textField: shouldChangeCharactersInRange: replacementString:)]) {
+		return [textFieldDelegate textField:textField shouldChangeCharactersInRange:range replacementString:string];
 	}
+	return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+	if (self.textFieldDelegate && [textFieldDelegate respondsToSelector:@selector(textFieldShouldClear:)]) {
+		return [textFieldDelegate textFieldShouldClear:textField];
+	}
+	return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	if (shouldSelectNextOnEnter) {
@@ -247,6 +270,52 @@
 	}
 	return YES;
 }
+
+#pragma mark - UITextViewDelegate methods
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewShouldBeginEditing:)]) {
+		return [textViewDelegate textViewShouldBeginEditing:textView];
+	}
+	return YES;	
+}
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView{
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewShouldEndEditing:)]) {
+		return [textViewDelegate textViewShouldEndEditing:textView];
+	}
+	return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+	self.selectedTextFieldOrView = textView;
+	[self updateBarHelper];
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewDidBeginEditing:)]) {
+		[textViewDelegate textViewDidBeginEditing:textView];
+	}
+}
+- (void)textViewDidEndEditing:(UITextView *)textView{
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewDidEndEditing:)]) {
+		[textViewDelegate textViewDidEndEditing:textView];
+	}
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textView: shouldChangeTextInRange: replacementText:)]) {
+		return [textViewDelegate textView:textView shouldChangeTextInRange:range replacementText:text];
+	}
+	return YES;
+}
+- (void)textViewDidChange:(UITextView *)textView{
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewDidChange:)]) {
+		[textViewDelegate textViewDidChange:textView];
+	}
+}
+
+- (void)textViewDidChangeSelection:(UITextView *)textView{
+	if (self.textViewDelegate && [textViewDelegate respondsToSelector:@selector(textViewDidChangeSelection:)]) {
+		[textViewDelegate textViewDidChangeSelection:textView];
+	}
+}
+
 #pragma mark - KeyBoard notifications
 - (void) keyboardWillShow:(NSNotification*)notify{	
 	 self.kbRect = [(NSValue*)[notify.userInfo valueForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
