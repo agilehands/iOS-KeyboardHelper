@@ -9,29 +9,13 @@
 #import <Foundation/Foundation.h>
 typedef void(^t_KeyboardHelperOnDone)(void);
 
-@interface KeyboardHelper : NSObject<UITextFieldDelegate, UITextViewDelegate>{
+@interface KeyboardHelper : NSObject{
 	float statusBarHeight;
 	BOOL enabled;
 }
 
-@property (nonatomic, strong) NSMutableArray* textFieldsAndViews;
-
-@property (nonatomic, strong) UIToolbar* barHelper;
-@property (nonatomic, strong) NSArray* barButtonSetNormal;
-@property (nonatomic, strong) NSArray* barButtonSetAtFirst;
-@property (nonatomic, strong) NSArray* barButtonSetAtLast;
-
 @property (nonatomic, assign) id<UITextViewDelegate> textViewDelegate;
 @property (nonatomic, assign) id<UITextFieldDelegate> textFieldDelegate;
-@property (nonatomic, assign) UIView* selectedTextFieldOrView;
-
-@property (nonatomic, strong) t_KeyboardHelperOnDone onDoneBlock;
-@property (nonatomic, assign) SEL onDoneSelector;
-@property (nonatomic, assign) UIViewController* viewController;
-@property (nonatomic, assign) CGRect initialFrame;
-@property (nonatomic, assign) CGRect kbRect;
-@property (nonatomic, assign) float distanceFromKeyBoardTop;
-@property (nonatomic, assign) BOOL shouldSelectNextOnEnter;
 
 
 - (id) initWithViewController:(UIViewController*)viewController;

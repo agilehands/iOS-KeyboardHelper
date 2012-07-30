@@ -8,6 +8,26 @@
 
 #import "KeyboardHelper.h"
 
+@interface KeyboardHelper()<UITextFieldDelegate, UITextViewDelegate>
+@property (nonatomic, strong) NSMutableArray* textFieldsAndViews;
+
+@property (nonatomic, strong) UIToolbar* barHelper;
+@property (nonatomic, strong) NSArray* barButtonSetNormal;
+@property (nonatomic, strong) NSArray* barButtonSetAtFirst;
+@property (nonatomic, strong) NSArray* barButtonSetAtLast;
+@property (nonatomic, assign) UIView* selectedTextFieldOrView;
+
+@property (nonatomic, strong) t_KeyboardHelperOnDone onDoneBlock;
+@property (nonatomic, assign) SEL onDoneSelector;
+@property (nonatomic, assign) UIViewController* viewController;
+@property (nonatomic, assign) CGRect initialFrame;
+@property (nonatomic, assign) CGRect kbRect;
+@property (nonatomic, assign) float distanceFromKeyBoardTop;
+@property (nonatomic, assign) BOOL shouldSelectNextOnEnter;
+
+
+@end
+
 @implementation KeyboardHelper
 @synthesize textFieldsAndViews, barHelper, barButtonSetAtFirst, barButtonSetAtLast, barButtonSetNormal;
 @synthesize textViewDelegate, textFieldDelegate, selectedTextFieldOrView;
@@ -87,7 +107,13 @@
 	[textFieldsAndViews removeAllObjects];
 	
 	for (UIView* aview in viewController.view.subviews) {
-		if ( !aview.hidden && aview.alpha && ( [aview isKindOfClass:[UITextField class]] || [aview isKindOfClass:[UITextView class]] )) {
+		if ( !aview.hidden 
+			&& aview.alpha 
+			&& aview.isUserInteractionEnabled
+			&& ( [aview isKindOfClass:[UITextField class]] 
+				|| [aview isKindOfClass:[UITextView class]] 
+				)
+			) {
 			
 			if([aview respondsToSelector:@selector(setInputAccessoryView:)]){
 				[aview performSelector:@selector(setInputAccessoryView:) withObject:self.barHelper];
