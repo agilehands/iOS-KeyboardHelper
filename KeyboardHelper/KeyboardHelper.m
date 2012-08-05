@@ -221,7 +221,8 @@
 							 viewController.view.frame = newFrame;
 						 }];
 	}
-}
+}	
+	
 - (void) updateBarHelper{
 	if (!CGRectIsEmpty(self.kbRect)) {
 		[self updateViewPosition];
@@ -229,13 +230,12 @@
 	
 	id obj = [textFieldsAndViews objectAtIndex:0];
 	if ( obj == selectedTextFieldOrView) {
-		segPrevNext.momentary = NO;
-		segPrevNext.selectedSegmentIndex = 0;
+        [segPrevNext setEnabled:NO forSegmentAtIndex:0];
 	} else if ( [textFieldsAndViews lastObject] == selectedTextFieldOrView ) {
-		segPrevNext.momentary = NO;
-		segPrevNext.selectedSegmentIndex = 1;
+        [segPrevNext setEnabled:NO forSegmentAtIndex:1];
 	} else {
-		segPrevNext.momentary = YES;
+        [segPrevNext setEnabled:YES forSegmentAtIndex:0];
+        [segPrevNext setEnabled:YES forSegmentAtIndex:1];
 	}
 }
 
