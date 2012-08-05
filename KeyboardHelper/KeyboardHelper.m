@@ -77,7 +77,7 @@
 			statusBarHeight = rect.size.height;
 		}		
 		
-		self.barHelper = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+		self.barHelper = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, vc.view.bounds.size.width, 44)];
 		barHelper.barStyle = UIBarStyleBlackTranslucent;
 		
 		// segmented control idea was given by Adam Roberts, Managing Director at Enigmatic Flare, 2012
