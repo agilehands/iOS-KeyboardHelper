@@ -230,12 +230,14 @@
 	
 	id obj = [textFieldsAndViews objectAtIndex:0];
 	if ( obj == selectedTextFieldOrView) {
-        [segPrevNext setEnabled:NO forSegmentAtIndex:0];
+	        [segPrevNext setEnabled:NO forSegmentAtIndex:0];
+        	[segPrevNext setEnabled:YES forSegmentAtIndex:1];
 	} else if ( [textFieldsAndViews lastObject] == selectedTextFieldOrView ) {
-        [segPrevNext setEnabled:NO forSegmentAtIndex:1];
+        	[segPrevNext setEnabled:NO forSegmentAtIndex:1];
+       	        [segPrevNext setEnabled:YES forSegmentAtIndex:0];
 	} else {
-        [segPrevNext setEnabled:YES forSegmentAtIndex:0];
-        [segPrevNext setEnabled:YES forSegmentAtIndex:1];
+	        [segPrevNext setEnabled:YES forSegmentAtIndex:0];
+       		[segPrevNext setEnabled:YES forSegmentAtIndex:1];
 	}
 }
 
