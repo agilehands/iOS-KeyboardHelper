@@ -77,7 +77,7 @@
 			statusBarHeight = rect.size.height;
 		}		
 		
-		self.barHelper = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+		self.barHelper = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, vc.view.bounds.size.width, 44)];
 		barHelper.barStyle = UIBarStyleBlackTranslucent;
 		
 		// segmented control idea was given by Adam Roberts, Managing Director at Enigmatic Flare, 2012
@@ -221,7 +221,8 @@
 							 viewController.view.frame = newFrame;
 						 }];
 	}
-}
+}	
+	
 - (void) updateBarHelper{
 	if (!CGRectIsEmpty(self.kbRect)) {
 		[self updateViewPosition];
@@ -229,13 +230,14 @@
 	
 	id obj = [textFieldsAndViews objectAtIndex:0];
 	if ( obj == selectedTextFieldOrView) {
-		segPrevNext.momentary = NO;
-		segPrevNext.selectedSegmentIndex = 0;
+	        [segPrevNext setEnabled:NO forSegmentAtIndex:0];
+        	[segPrevNext setEnabled:YES forSegmentAtIndex:1];
 	} else if ( [textFieldsAndViews lastObject] == selectedTextFieldOrView ) {
-		segPrevNext.momentary = NO;
-		segPrevNext.selectedSegmentIndex = 1;
+        	[segPrevNext setEnabled:NO forSegmentAtIndex:1];
+       	        [segPrevNext setEnabled:YES forSegmentAtIndex:0];
 	} else {
-		segPrevNext.momentary = YES;
+	        [segPrevNext setEnabled:YES forSegmentAtIndex:0];
+       		[segPrevNext setEnabled:YES forSegmentAtIndex:1];
 	}
 }
 

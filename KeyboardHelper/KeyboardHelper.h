@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 typedef void(^t_KeyboardHelperOnDone)(void);
 
 @interface KeyboardHelper : NSObject{
